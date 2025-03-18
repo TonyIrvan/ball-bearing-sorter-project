@@ -15,7 +15,7 @@ def display_average_color_terminal(average_rgb):
 
 # Modify the test function
 def test_with_static_image():
-    image_path = r"testimage3.jpg"
+    image_path = r"C:testimage1.jpg"
     average_rgb = calculate_average_rgb(image_path)
     display_average_color_terminal(average_rgb)
 
