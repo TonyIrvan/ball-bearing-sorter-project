@@ -1,25 +1,18 @@
 import RPi.GPIO as GPIO
 import time
+import config
 
-servo_pin = 18  # GPIO pin connected to the signal wire
-
-# Setup
+# Setup GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(servo_pin, GPIO.OUT)
+for pin in config.MOTORS.values():
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, GPIO.LOW)
 
-# Create PWM instance with 50Hz frequency
-pwm = GPIO.PWM(servo_pin, 50)
-pwm.start(0)
+def activate_motor(material):
+    if material in config.MOTORS:
+        GPIO.output(config.MOTORS[material], GPIO.HIGH)
+        time.sleep(0.5)  # Adjust for trapdoor opening time
+        GPIO.output(config.MOTORS[material], GPIO.LOW)
 
-def set_angle(angle):
-    duty_cycle = 2 + (angle / 18)  # Convert angle to duty cycle
-    pwm.ChangeDutyCycle(duty_cycle)
-    time.sleep(0.5)
-    pwm.ChangeDutyCycle(0)  # Stop sending signal
-
-# Rotate 90 degrees
-set_angle(90)
-
-# Cleanup
-pwm.stop()
-GPIO.cleanup()
+def cleanup():
+    GPIO.cleanup()
