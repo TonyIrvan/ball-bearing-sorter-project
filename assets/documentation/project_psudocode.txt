@@ -1,0 +1,22 @@
+Start program
+
+Set up vision system
+Set up motor controls
+Set up lagging system with Hall effect sensor
+
+While running:
+    Take a picture
+    Analyze colors to figure out the material
+
+    If material is recognized:
+        Print what it is
+        Open the right trapdoor
+
+    Otherwise, print "Unknown material, skipping"
+
+    Wait a bit, then repeat
+
+If stopped (CTRL+C):
+    Clean up and exit safely
+
+End program

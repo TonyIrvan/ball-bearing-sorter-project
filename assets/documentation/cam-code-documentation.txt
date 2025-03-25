@@ -1,4 +1,0 @@
-Quick start commands.
-
-rpicam-still -o image.jpg
-
