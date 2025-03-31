@@ -1,4 +1,4 @@
-# Trapdoor Motor GPIO Pins
+﻿# Trapdoor Motor GPIO Pins
 MOTORS = {
     "chrome": 17,
     "brass": 27,
