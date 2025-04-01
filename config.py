@@ -9,6 +9,7 @@ MOTORS = {
 HALL_SENSOR_PIN = 23
 LAGGING_MOTOR_PIN = 24
 
+
 # Predefined RGB Ranges for Material Identification
 #NOT ACTUAL DATA
 COLOR_RANGES = {
