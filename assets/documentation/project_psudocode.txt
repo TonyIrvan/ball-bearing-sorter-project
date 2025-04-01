@@ -12,8 +12,6 @@ While running:
         Print what it is
         Open the right trapdoor
 
-    Otherwise, print "Unknown material, skipping"
-
     Wait a bit, then repeat
 
 If stopped (CTRL+C):
