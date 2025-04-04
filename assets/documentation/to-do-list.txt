@@ -1,0 +1,6 @@
+To do list:
+    - Vertical screw, cut and fit with tube
+    - ALL CAMERA WORK
+    - Hall effect sensor and link with cam
+    - Connect and mount all servo motors
+    - Link servos to camera
