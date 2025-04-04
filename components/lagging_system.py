@@ -11,6 +11,7 @@ GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)  # Motor runs by default
 def hall_sensor_callback(channel):
     print("Magnet detected! Stopping motor.")
     GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.LOW)  # Stop motor
+    #Inster code to call camera to take picture
     time.sleep(8)  # Wait for camera to take a picture
     print("Resuming motor.")
     GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)  # Resume motor

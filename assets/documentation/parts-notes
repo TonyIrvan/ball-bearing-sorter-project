@@ -1,0 +1,16 @@
+Vex Motor voltage ranges:
+    Zero point is: 52,000
+    High end counter clockwise engages at: 17,000
+    Low end counter clockwise engages around: 45,000
+    High end clockwise engages around: 64,000 (issues with over 16 bit integers)
+    Low end is clockwise engaes at: 54,000
+
+    Good Speed for cement mixer is: 45,000 (Currently in use)
+    Good Speed for horizontal screws: Max (17,000)
+
+To do list:
+    - Vertical screw, cut and fit with tube
+    - ALL CAMERA WORK
+    - Hall effect sensor and link with cam
+    - Connect and mount all servo motors
+    - Link servos to camera

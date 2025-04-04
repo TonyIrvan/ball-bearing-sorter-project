@@ -1,6 +1,4 @@
-import vision
-import motor_control
-import lagging_system
+from components import lagging_system, motor_control, vision
 import time
 
 def main():
