@@ -11,7 +11,7 @@ for pin in config.MOTORS.values():
 def activate_motor(material):
     if material in config.MOTORS:
         GPIO.output(config.MOTORS[material], GPIO.HIGH)
-        time.sleep(0.5)  # Adjust for trapdoor opening time
+        time.sleep(config.MOTOR_ACTIVATION_TIME)
         GPIO.output(config.MOTORS[material], GPIO.LOW)
 
 def cleanup():
