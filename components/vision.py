@@ -19,18 +19,18 @@ def capture_and_process():
         success, filename = camera.camera_system.capture_image()
         if not success:
             logger.error("Image capture failed")
-            return (None, None, None)
+            return None, None, None
 
         # Process the image
         avg_rgb = calculate_average_rgb(filename)
         material = identify_material(avg_rgb)
 
         logger.info(f"Processed {filename}: Material={material}, RGB={avg_rgb}")
-        return (material, avg_rgb, filename)
+        return material, avg_rgb, filename
 
     except Exception as e:
         logger.error(f"Vision processing failed: {str(e)}")
-        return (None, None, None)
+        return None, None, None
 
 
 def calculate_average_rgb(image_path):
@@ -53,7 +53,7 @@ def calculate_average_rgb(image_path):
 
     except Exception as e:
         logger.error(f"RGB calculation failed: {str(e)}")
-        return (0, 0, 0)  # Return black on error
+        return 0, 0, 0  # Return black on error
 
 
 def identify_material(avg_rgb):

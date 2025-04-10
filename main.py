@@ -1,9 +1,9 @@
-import logger
-
-from components import vision, motor_control, lagging_system, camera
+from components import vision, motor_control, lagging_system, camera, hall_effect
 import config
 import time
+import logger
 import logging
+
 
 # Configure logging
 logging.basicConfig(

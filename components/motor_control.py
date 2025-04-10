@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import time
 import config
 
-# Setup GPIO
 GPIO.setmode(GPIO.BCM)
 for pin in config.MOTORS.values():
     GPIO.setup(pin, GPIO.OUT)

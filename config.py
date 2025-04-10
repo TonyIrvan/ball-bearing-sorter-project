@@ -1,13 +1,12 @@
-﻿# Trapdoor Motor GPIO Pins
+﻿# Trapdoor Motor GPIO Pins, Hall Effect Sensor, & Lagging Motor
 MOTORS = {
     "chrome": 17,
     "brass": 27,
     "nylon": 22
 }
-
-# Hall Effect Sensor & Lagging Motor
 HALL_SENSOR_PIN = 23
 LAGGING_MOTOR_PIN = 24
+
 
 # Camera Settings (for camera.py)
 IMAGE_FILENAME = "captured.jpg"  # Default image filename
@@ -18,7 +17,9 @@ CAMERA_HEIGHT = 480
 # Timing Settings
 MOTOR_ACTIVATION_TIME = 0.5      # Seconds (from motor_control.py)
 LAGGING_DELAY = 8                # Seconds (from lagging_system.py)
-PROCESSING_DELAY = 1             # Seconds (from main.py)
+PROCESSING_DELAY = 1
+HALL_EFFECT_DELAY = 10
+PRE_HALL_EFFECT_ADJUSTMENT = 0.5 # Seconds (from hall_effect.py)
 
 # Vision Processing Settings
 PROCESS_CENTER_ONLY = True  # Only process center of image
