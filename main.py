@@ -1,9 +1,11 @@
-import vision, motor_control, lagging_system, camera, hall_effect
-import config
-import time
 import logging
+import time
+import config
+import vision
+import camera
+import motor_control
+from sensor_motor import SensorMotorSystem
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -11,25 +13,32 @@ logging.basicConfig(
 
 def main():
     try:
-        logging.info("Starting material sorting system")
+        logger = logging.getLogger(__name__)
+        logger.info("Starting material sorting system with sensor-based rotation")
+        
+        sorter = SensorMotorSystem()
 
         while True:
-            # Capture and process in one call
+            # Wait for magnet detection and stop at a valid position
+            sorter.wait_for_next_position()
+
+            # Take picture and classify
             material, avg_rgb, filename = vision.capture_and_process()
 
             if material:
-                logging.info(f"Identified {material} from {filename}")
-                motor_control.activate_motor(material)
+                logger.info(f"Identified {material} from {filename}")
+                sorter.sort_material(material)
             else:
-                logging.warning("No material identified")
+                logger.warning("No material identified")
 
             time.sleep(config.PROCESSING_DELAY)
 
     except KeyboardInterrupt:
-        logging.info("Shutting down system...")
+        logger.info("Shutting down system...")
+
     finally:
         motor_control.cleanup()
-        lagging_system.cleanup()
+        sorter.cleanup()
         camera.camera_system.release()
 
 if __name__ == "__main__":
