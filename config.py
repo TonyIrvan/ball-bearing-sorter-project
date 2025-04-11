@@ -9,7 +9,6 @@ LAGGING_MOTOR_PIN = 24
 
 
 # Camera Settings (for camera.py)
-IMAGE_FILENAME = "captured.jpg"  # Default image filename
 CAMERA_INDEX = 0
 CAMERA_WIDTH = 640   # 640x480 is typically fastest
 CAMERA_HEIGHT = 480
