@@ -7,3 +7,7 @@ Vex Motor voltage ranges:
 
     Good Speed for cement mixer is: 45,000 (Currently in use)
     Good Speed for horizontal screws: Max (17,000)
+
+Micro Servo Notes:
+    Neutral pos: 7864
+    Open max: 1700
