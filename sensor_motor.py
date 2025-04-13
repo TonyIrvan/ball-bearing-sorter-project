@@ -4,9 +4,19 @@ import config
 import motor_control
 import vision
 import logging
+import threading
 from collections import deque
 
+import board
+import busio
+from adafruit_pca9685 import PCA9685
+
 logger = logging.getLogger(__name__)
+
+# Setup I2C and PCA9685
+i2c = busio.I2C(board.SCL, board.SDA)
+pca = PCA9685(i2c)
+pca.frequency = 50
 
 
 class SensorMotorSystem:
@@ -17,8 +27,9 @@ class SensorMotorSystem:
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(config.HALL_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(config.LAGGING_MOTOR_PIN, GPIO.OUT)
-        GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)
+
+        # Start motor using PCA
+        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0xFFFF
         self._setup_callbacks()
 
     def _setup_callbacks(self):
@@ -32,19 +43,17 @@ class SensorMotorSystem:
     def _magnet_detected(self, channel):
         with self.position_lock:
             try:
-                # Stop motor and update position
-                GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.LOW)
+                # Stop motor
+                pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0
                 self.current_position = (self.current_position % 4) + 1
                 logger.info(f"Position updated to {self.current_position}")
 
-                # Position-specific processing
                 if self.current_position == 2:
                     material, _, _ = vision.capture_and_process()
                     if material:
-                        self.material_queue.append((material, 2))  # Needs 2 positions to reach exit
+                        self.material_queue.append((material, 2))
                         logger.info(f"Queued {material} for processing")
 
-                # Update all queued materials
                 for i in reversed(range(len(self.material_queue))):
                     mat, steps = self.material_queue[i]
                     if steps <= 1:
@@ -57,10 +66,10 @@ class SensorMotorSystem:
                 logger.error(f"Processing error: {e}")
             finally:
                 time.sleep(config.HALL_EFFECT_DELAY)
-                GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)
+                pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0xFFFF
 
     def cleanup(self):
-        GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.LOW)
+        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0
         GPIO.cleanup()
 
 

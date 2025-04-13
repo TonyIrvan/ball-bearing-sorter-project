@@ -1,24 +1,27 @@
-import RPi.GPIO as GPIO
 import time
 import signal
 import sys
+import board
+import busio
+from adafruit_pca9685 import PCA9685
 
 import config
 
-# Configuration
-GPIO.setwarnings(False)
+# Setup I2C and PCA9685
+i2c = busio.I2C(board.SCL, board.SDA)
+pca = PCA9685(i2c)
+pca.frequency = 50
 
 def setup():
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(config.CONTINUOUS_MOTOR1, GPIO.OUT)
-    GPIO.setup(config.CONTINUOUS_MOTOR2, GPIO.OUT)
-    GPIO.output(config.CONTINUOUS_MOTOR1, GPIO.HIGH)
-    GPIO.output(config.CONTINUOUS_MOTOR2, GPIO.HIGH)
+    # Set motors to full speed (duty cycle max)
+    pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = 0xFFFF
+    pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = 0xFFFF
 
 def cleanup(signal, frame):
-    GPIO.output(config.CONTINUOUS_MOTOR1, GPIO.LOW)
-    GPIO.output(config.CONTINUOUS_MOTOR2, GPIO.LOW)
-    GPIO.cleanup()
+    # Stop motors by setting duty cycle to 0
+    pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = 0
+    pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = 0
+    print("Motors stopped. Exiting.")
     sys.exit(0)
 
 if __name__ == "__main__":
@@ -26,4 +29,4 @@ if __name__ == "__main__":
     setup()
     print("Motors running continuously. Press CTRL+C to stop.")
     while True:
-        time.sleep(1)  # Keep program running
+        time.sleep(1)

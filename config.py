@@ -1,15 +1,15 @@
-﻿# Trapdoor Motor GPIO Pins, Hall Effect Sensor, & Lagging Motor
+﻿# Trapdoor Motor PCA9685 Channels, Hall Effect Sensor (GPIO), & Lagging Motor (PCA)
 MOTORS = {
-    "chrome": 25,
-    "brass": 27,
-    "nylon": 22
+    "chrome": 0,
+    "brass": 1,
+    "nylon": 2
 }
 
-HALL_SENSOR_PIN = 23
-LAGGING_MOTOR_PIN = 24
+HALL_SENSOR_PIN = 23           # Stays GPIO
+LAGGING_MOTOR_PIN = 3          # PCA9685 channel
 
-CONTINUOUS_MOTOR1 = 18
-CONTINUOUS_MOTOR2 = 17
+CONTINUOUS_MOTOR1 = 4          # PCA9685 channel
+CONTINUOUS_MOTOR2 = 5          # PCA9685 channel
 
 # Camera Settings (for camera.py)
 CAMERA_INDEX = 0
@@ -28,7 +28,7 @@ PROCESS_CENTER_ONLY = True  # Only process center of image
 CENTER_REGION_RATIO = 0.3   # Use center 30% of image
 
 # Predefined RGB Ranges for Material Identification
-#NOT ACTUAL DATA
+# NOT ACTUAL DATA
 COLOR_RANGES = {
     "chrome": [(180, 180, 180), (255, 255, 255)],
     "brass": [(160, 100, 60), (230, 190, 140)],
