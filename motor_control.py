@@ -30,7 +30,7 @@ class MotorController:
         duty = self._angle_to_duty(angle)
         pca.channels[channel].duty_cycle = duty
         time.sleep(0.5)
-        pca.channels[channel].duty_cycle = MOTOR_ZERO  # Stop signal
+        pca.channels[channel].duty_cycle = config.MOTOR_ZERO  # Stop signal
 
     def activate_motor(self, material):
         if material not in self.motor_channels:

@@ -14,10 +14,10 @@ pca = PCA9685(i2c)
 pca.frequency = 50
 
 def start_motor():
-    pca.channels[config.LAGGING_PWM_CHANNEL].duty_cycle = config.FAST_CW #Might be CCW
+    pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.FAST_CW #Might be CCW
 
 def stop_motor():
-    pca.channels[config.LAGGING_PWM_CHANNEL].duty_cycle = config.MOTOR_ZERO
+    pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.MOTOR_ZERO
 
 def hall_callback(channel):
     print("Magnet detected - stopping motor and processing")

@@ -14,13 +14,13 @@ pca.frequency = 50
 
 def setup():
     # Set motors to full speed (duty cycle max)
-    pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = FAST_CW
-    pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = FAST_CCW
+    pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = config.FAST_CW
+    pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = config.FAST_CCW
 
 def cleanup(signal, frame):
     # Stop motors by setting duty cycle to 0
-    pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = MOTOR_ZERO
-    pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = MOTOR_ZERO
+    pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = config.MOTOR_ZERO
+    pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = config.MOTOR_ZERO
     print("Motors stopped. Exiting.")
     sys.exit(0)
 
