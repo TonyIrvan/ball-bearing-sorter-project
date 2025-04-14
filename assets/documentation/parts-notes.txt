@@ -3,7 +3,7 @@ Vex Motor voltage ranges:
     High end counter clockwise engages at: 17,000
     Low end counter clockwise engages around: 45,000
     High end clockwise engages around: 64,000 (issues with over 16 bit integers)
-    Low end is clockwise engaes at: 54,000
+    Low end clockwise engaes at: 54,000
 
     Good Speed for cement mixer is: 45,000 (Currently in use)
     Good Speed for horizontal screws: Max (17,000)

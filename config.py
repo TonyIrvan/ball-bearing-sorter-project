@@ -12,7 +12,14 @@ CONTINUOUS_MOTOR1 = 14          # PCA9685 channel - horizontal screws
 CONTINUOUS_MOTOR2 = 15          # PCA9685 channel - vert screw and cement mixer
 
 # Motor PWM signal values
+FAST_CW = 64000
+FAST_CCW = 17000
+SLOW_CW = 54000
+SLOW_CCW = 45000
+MOTOR_ZERO = 52000
 
+SERVO_OPEN = 7864
+SERVO_ZERO = 1700
 
 # Camera Settings (for camera.py)
 CAMERA_INDEX = 0
