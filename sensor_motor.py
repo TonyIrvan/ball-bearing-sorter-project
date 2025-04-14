@@ -29,7 +29,7 @@ class SensorMotorSystem:
         GPIO.setup(config.HALL_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
         # Start motor using PCA
-        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0xFFFF
+        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 17000
         self._setup_callbacks()
 
     def _setup_callbacks(self):
@@ -44,7 +44,7 @@ class SensorMotorSystem:
         with self.position_lock:
             try:
                 # Stop motor
-                pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0
+                pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 52000
                 self.current_position = (self.current_position % 4) + 1
                 logger.info(f"Position updated to {self.current_position}")
 
@@ -66,10 +66,10 @@ class SensorMotorSystem:
                 logger.error(f"Processing error: {e}")
             finally:
                 time.sleep(config.HALL_EFFECT_DELAY)
-                pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0xFFFF
+                pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 17000
 
     def cleanup(self):
-        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 0
+        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = 52000
         GPIO.cleanup()
 
 

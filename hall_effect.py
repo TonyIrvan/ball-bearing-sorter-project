@@ -6,16 +6,16 @@ import motor_control
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(config.HALL_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(config.LAGGING_MOTOR_PIN, GPIO.OUT)
+#GPIO.setup(config.LAGGING_MOTOR_PIN, GPIO.OUT)
 
 # Start with motor running
-GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)
+#GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)
 
 
 def magnet_detected(channel):
     # Pause motor
     time.sleep(config.PRE_HALL_EFFECT_ADJUSTMENT)
-    GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.LOW)
+    #GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.LOW)
 
     # Capture and process image
     material, _, _ = vision.capture_and_process()
@@ -28,7 +28,7 @@ def magnet_detected(channel):
     time.sleep(config.HALL_EFFECT_DELAY)
 
     # Restart motor
-    GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)
+    #GPIO.output(config.LAGGING_MOTOR_PIN, GPIO.HIGH)
 
 
 # Detect falling edge with debounce

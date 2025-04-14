@@ -11,6 +11,9 @@ LAGGING_MOTOR_PIN = 13          # PCA9685 channel
 CONTINUOUS_MOTOR1 = 14          # PCA9685 channel - horizontal screws
 CONTINUOUS_MOTOR2 = 15          # PCA9685 channel - vert screw and cement mixer
 
+# Motor PWM signal values
+
+
 # Camera Settings (for camera.py)
 CAMERA_INDEX = 0
 CAMERA_WIDTH = 640   # 640x480 is typically fastest
