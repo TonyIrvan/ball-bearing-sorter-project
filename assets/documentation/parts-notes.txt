@@ -1,7 +1,7 @@
 Vex Motor voltage ranges:
     Zero point is: 52,000
     High end counter clockwise engages at: 17,000
-    Low end counter clockwise engages around: 45,000
+    Low end counter clockwise engages around: 45,500
     High end clockwise engages around: 64,000 (issues with over 16 bit integers)
     Low end clockwise engaes at: 54,000
 

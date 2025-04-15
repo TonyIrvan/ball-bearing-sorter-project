@@ -15,8 +15,11 @@ CONTINUOUS_MOTOR2 = 15          # PCA9685 channel - vert screw and cement mixer
 FAST_CW = 64000
 FAST_CCW = 17000
 SLOW_CW = 54000
-SLOW_CCW = 45000
+SLOW_CCW = 45500
 MOTOR_ZERO = 0
+
+CEMENT_MIXER = 57500
+R_LAGGING_MOTOR = 45500
 
 SERVO_OPEN = 7864
 SERVO_ZERO = 1700
@@ -32,6 +35,7 @@ LAGGING_DELAY = 8.0              # Seconds (from lagging_system.py)
 PROCESSING_DELAY = 1.0
 HALL_EFFECT_DELAY = 5.0
 PRE_HALL_EFFECT_ADJUSTMENT = 0.5 # Seconds (from hall_effect.py)
+R_LAG_CYCLE = 0.362 #Temp solution
 
 # Vision Processing Settings
 PROCESS_CENTER_ONLY = True  # Only process center of image
