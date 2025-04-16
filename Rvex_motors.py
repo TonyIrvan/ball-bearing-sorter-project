@@ -16,11 +16,6 @@ def setup():
     # Set motors to full speed (duty cycle max)
     pca.channels[config.CONTINUOUS_MOTOR1].duty_cycle = config.CEMENT_MIXER
     pca.channels[config.CONTINUOUS_MOTOR2].duty_cycle = config.FAST_CW
-    while(True):
-        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.R_LAGGING_MOTOR
-        time.sleep(config.R_LAG_CYCLE)
-        pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.MOTOR_ZERO
-        time.sleep(1)
 
 
 def cleanup(signal, frame):

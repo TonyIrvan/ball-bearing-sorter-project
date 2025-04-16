@@ -33,9 +33,7 @@ CAMERA_HEIGHT = 480
 MOTOR_ACTIVATION_TIME = 2.0      # Seconds (from motor_control.py)
 LAGGING_DELAY = 8.0              # Seconds (from lagging_system.py)
 PROCESSING_DELAY = 1.0
-HALL_EFFECT_DELAY = 5.0
-PRE_HALL_EFFECT_ADJUSTMENT = 0.5 # Seconds (from hall_effect.py)
-R_LAG_CYCLE = 0.362 #Temp solution
+HALL_EFFECT_DELAY = 2.0
 
 # Vision Processing Settings
 PROCESS_CENTER_ONLY = True  # Only process center of image

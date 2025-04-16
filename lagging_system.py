@@ -14,7 +14,7 @@ pca = PCA9685(i2c)
 pca.frequency = 50
 
 def start_motor():
-    pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.FAST_CW #Might be CCW
+    pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.SLOW_CCW #Might be CCW
 
 def stop_motor():
     pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.MOTOR_ZERO
@@ -22,7 +22,6 @@ def stop_motor():
 def hall_callback(channel):
     print("Magnet detected - stopping motor and processing")
     
-    time.sleep(config.PRE_HALL_EFFECT_ADJUSTMENT)
     stop_motor()
     
     material, _, _ = vision.capture_and_process()
@@ -35,12 +34,12 @@ def hall_callback(channel):
 
 def setup():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(config.HALL_SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(config.HALL_SENSOR_PIN, GPIO.IN)
 
     start_motor()
 
-    GPIO.add_event_detect(config.HALL_SENSOR_PIN, GPIO.FALLING,
-                          callback=hall_callback, bouncetime=200)
+    GPIO.add_event_detect(config.HALL_SENSOR_PIN, GPIO.RISING,
+                          callback=hall_callback, bouncetime=150)
 
 def cleanup():
     stop_motor()
