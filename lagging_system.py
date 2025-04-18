@@ -14,7 +14,7 @@ pca = PCA9685(i2c)
 pca.frequency = 50
 
 def start_motor():
-    pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.SLOW_CCW #Might be CCW
+    pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.SLOW_CCW
 
 def stop_motor():
     pca.channels[config.LAGGING_MOTOR_PIN].duty_cycle = config.MOTOR_ZERO
@@ -39,7 +39,7 @@ def setup():
     start_motor()
 
     GPIO.add_event_detect(config.HALL_SENSOR_PIN, GPIO.RISING,
-                          callback=hall_callback, bouncetime=150)
+                          callback=hall_callback, bouncetime=150) #bounce = 90 on Left one
 
 def cleanup():
     stop_motor()
