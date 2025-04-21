@@ -11,3 +11,7 @@ Vex Motor voltage ranges:
 Micro Servo Notes:
     Neutral pos: 7864
     Open max: 1700
+
+Micro servo individual timing:
+    Nylon: 12.0s
+    Brass: 15.7

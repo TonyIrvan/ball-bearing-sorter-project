@@ -1,8 +1,7 @@
 ﻿# Trapdoor Motor PCA9685 Channels, Hall Effect Sensor (GPIO), & Lagging Motor (PCA)
 MOTORS = {
-    "chrome": 0,
     "brass": 1,
-    "nylon": 2
+    "nylon": 0
 }
 
 HALL_SENSOR_PIN = 23           # Stays GPIO
@@ -21,12 +20,12 @@ MOTOR_ZERO = 0
 CEMENT_MIXER = 57500
 R_LAGGING_MOTOR = 45500
 
-SERVO_OPEN = 7864
-SERVO_ZERO = 1700
+SERVO_ZERO = 7864
+SERVO_OPEN = 1700
 
 # Camera Settings (for camera.py)
 CAMERA_INDEX = 0
-CAMERA_WIDTH = 640   # 640x480 is typically fastest
+CAMERA_WIDTH = 480   # 640x480 is typically fastest
 CAMERA_HEIGHT = 480
 
 # Timing Settings
