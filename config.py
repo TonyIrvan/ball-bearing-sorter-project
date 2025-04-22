@@ -33,6 +33,7 @@ MOTOR_ACTIVATION_TIME = 2.0      # Seconds (from motor_control.py)
 LAGGING_DELAY = 8.0              # Seconds (from lagging_system.py)
 PROCESSING_DELAY = 1.0
 HALL_EFFECT_DELAY = 2.0
+
 # Per-material motor timing (in seconds)
 MOTOR_ACTIVATION_TIME = {
     "chrome": 0.6,
@@ -43,10 +44,11 @@ MOTOR_ACTIVATION_TIME = {
 # Fallback if material not found
 DEFAULT_ACTIVATION_TIME = 1.0
 
-
 # Vision Processing Settings
 PROCESS_CENTER_ONLY = True  # Only process center of image
 CENTER_REGION_RATIO = 0.3   # Use center 30% of image
+BW_TOLERANCE = 10  # tweak this if you want to be more/less strict
+
 
 # Predefined RGB Ranges for Material Identification
 # NOT ACTUAL DATA
