@@ -33,6 +33,16 @@ MOTOR_ACTIVATION_TIME = 2.0      # Seconds (from motor_control.py)
 LAGGING_DELAY = 8.0              # Seconds (from lagging_system.py)
 PROCESSING_DELAY = 1.0
 HALL_EFFECT_DELAY = 2.0
+# Per-material motor timing (in seconds)
+MOTOR_ACTIVATION_TIME = {
+    "chrome": 0.6,
+    "brass": 0.9,
+    "nylon": 1.2
+}
+
+# Fallback if material not found
+DEFAULT_ACTIVATION_TIME = 1.0
+
 
 # Vision Processing Settings
 PROCESS_CENTER_ONLY = True  # Only process center of image
