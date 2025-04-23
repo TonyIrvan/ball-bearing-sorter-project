@@ -35,10 +35,10 @@ PROCESSING_DELAY = 1.0
 HALL_EFFECT_DELAY = 2.0
 
 # Per-material motor timing (in seconds)
-MOTOR_ACTIVATION_TIME = {
-    "chrome": 0.6,
-    "brass": 0.9,
-    "nylon": 1.2
+CONVEYOR_DELAY = {
+    "nylon": 2.5,  # seconds to reach nylon trapdoor
+    "brass": 4.1,  # seconds to reach brass trapdoor
+    # no entry for chrome = no trapdoor
 }
 
 # Fallback if material not found
