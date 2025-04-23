@@ -36,6 +36,9 @@ def setup():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(config.HALL_SENSOR_PIN, GPIO.IN)
 
+    pca.channels[config.LED_PIN].duty_cycle = config.BRIGHTNESS
+
+
     start_motor()
 
     GPIO.add_event_detect(config.HALL_SENSOR_PIN, GPIO.RISING,

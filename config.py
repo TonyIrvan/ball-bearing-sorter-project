@@ -5,6 +5,9 @@ MOTORS = {
 }
 
 HALL_SENSOR_PIN = 23           # Stays GPIO
+
+LED_PIN = 8
+
 LAGGING_MOTOR_PIN = 13          # PCA9685 channel
 
 CONTINUOUS_MOTOR1 = 14          # PCA9685 channel - horizontal screws
@@ -22,6 +25,8 @@ R_LAGGING_MOTOR = 45500
 
 SERVO_ZERO = 7864
 SERVO_OPEN = 1700
+
+BRIGHTNESS = 1
 
 # Camera Settings (for camera.py)
 CAMERA_INDEX = 0
