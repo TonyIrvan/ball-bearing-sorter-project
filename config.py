@@ -29,7 +29,10 @@ CAMERA_WIDTH = 480   # 640x480 is typically fastest
 CAMERA_HEIGHT = 480
 
 # Timing Settings
-MOTOR_ACTIVATION_TIME = 2.0      # Seconds (from motor_control.py)
+MOTOR_ACTIVATION_TIME = {
+    "nylon": 0.8,
+    "brass": 1.2,
+}
 #LAGGING_DELAY = 8.0              # Seconds (from lagging_system.py)
 #PROCESSING_DELAY = 1.0
 HALL_EFFECT_DELAY = 1.0
