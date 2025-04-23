@@ -39,13 +39,18 @@ def activate_motor(material):
         logger.error(f"Motor activation failed: {e}")
 
 def process_signal(material):
-    delay = config.CONVEYOR_DELAY.get(material)
-    if delay is None:
-        logger.info(f"No trapdoor/delay defined for '{material}', skipping.")
+    material_queue.append(material)
+
+    if len(material_queue) < 3:
         return
 
-    trigger_time = time.time() + delay
-    material_queue.append((material, trigger_time))
+    delayed_material = material_queue.pop(0)
+
+    if delayed_material in config.CONVEYOR_DELAY:
+        # Delay by conveyor travel time
+        time.sleep(config.CONVEYOR_DELAY[delayed_material])
+        activate_motor(delayed_material)
+
 
 def update_queue():
     now = time.time()
