@@ -3,7 +3,6 @@ import logging
 import board
 import busio
 from adafruit_pca9685 import PCA9685
-from collections import deque
 
 import config
 
@@ -14,8 +13,19 @@ i2c = busio.I2C(board.SCL, board.SDA)
 pca = PCA9685(i2c)
 pca.frequency = 50
 
-# Store last few materials (FIFO queue)
-material_queue = deque(maxlen=3)  # Can hold current + 2 previous
+material_queue = []
+
+def process_signal(material):
+    """Add signal and trigger motor for one two steps behind"""
+    material_queue.append(material)
+
+    if len(material_queue) > 3:
+        material_queue.pop(0)  # Keep only last 3 items
+
+    if len(material_queue) == 3:
+        delayed_material = material_queue[0]
+        activate_motor(delayed_material)
+
 
 def set_servo_position(channel, duty):
     """Set servo to a specific duty cycle"""
