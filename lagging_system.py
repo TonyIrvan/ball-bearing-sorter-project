@@ -27,7 +27,7 @@ def hall_callback(channel):
     material, _, _ = vision.capture_and_process()
 
     if material:
-        motor_control.activate_motor(material)
+        motor_control.process_signal(material)
 
     time.sleep(config.HALL_EFFECT_DELAY)
     start_motor()

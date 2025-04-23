@@ -53,14 +53,6 @@ def activate_motor(material):
     except Exception as e:
         logger.error(f"Motor activation failed: {e}")
 
-def process_signal(material):
-    """Add signal and trigger motor for one two steps behind"""
-    material_queue.append(material)
-
-    if len(material_queue) == 3:
-        delayed_material = material_queue[0]  # The one two steps behind
-        activate_motor(delayed_material)
-
 def cleanup():
     """Reset all motors to closed"""
     for ch in config.MOTORS.values():
