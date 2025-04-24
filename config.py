@@ -1,10 +1,10 @@
-﻿# Trapdoor Motor PCA9685 Channels, Hall Effect Sensor (GPIO), & Lagging Motor (PCA)
+# Trapdoor Motor PCA9685 Channels, Hall Effect Sensor (GPIO), & Lagging Motor (PCA)
 MOTORS = {
     "brass": 1,
     "nylon": 0
 }
 
-HALL_SENSOR_PIN = 23           # Stays GPIO
+HALL_SENSOR_PIN = 4           # Stays GPIO
 
 LED_PIN = 8
 
@@ -35,8 +35,8 @@ CAMERA_HEIGHT = 480
 
 # Timing Settings
 MOTOR_ACTIVATION_TIME = {
-    "nylon": 0.8,
-    "brass": 1.2,
+    "nylon": 0.7,
+    "brass": 0.7,
 }
 #LAGGING_DELAY = 8.0              # Seconds (from lagging_system.py)
 #PROCESSING_DELAY = 1.0
@@ -45,7 +45,7 @@ HALL_EFFECT_DELAY = 1.0
 # Per-material motor timing (in seconds)
 CONVEYOR_DELAY = {
     "nylon": 0.9,  # seconds to reach nylon trapdoor
-    "brass": 1.2,  # seconds to reach brass trapdoor
+    "brass": 4.3,  # seconds to reach brass trapdoor
     # no entry for chrome = no trapdoor
 }
 

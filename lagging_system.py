@@ -52,7 +52,6 @@ if __name__ == "__main__":
     try:
         setup()
         while True:
-            motor_control.update_queue()
             time.sleep(0.1)
     except KeyboardInterrupt:
         cleanup()

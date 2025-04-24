@@ -46,21 +46,18 @@ def process_signal(material):
 
     delayed_material = material_queue.pop(0)
 
-    if delayed_material in config.CONVEYOR_DELAY:
-        # Delay by conveyor travel time
-        time.sleep(config.CONVEYOR_DELAY[delayed_material])
-        activate_motor(delayed_material)
+    if delayed_material == "none":
+        return
 
+    delay = config.CONVEYOR_DELAY.get(delayed_material)
+    if delay is None:
+        return
 
-def update_queue():
-    now = time.time()
-    ready = [entry for entry in material_queue if entry[1] <= now]
-    remaining = [entry for entry in material_queue if entry[1] > now]
+    time.sleep(delay)
+    activate_motor(delayed_material)
 
-    for material, _ in ready:
-        activate_motor(material)
-
-    material_queue[:] = remaining  # Update in-place
+    print("Queue:", material_queue)
+    print("Processed", delayed_material)
 
 def cleanup():
     for ch in config.MOTORS.values():
