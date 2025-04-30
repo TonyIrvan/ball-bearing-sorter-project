@@ -1,0 +1,8 @@
+To Do List For Redesign:
+    - Create the tracks
+    - Design new hopper ***
+    - Create connection of new hopper into acrylic screw
+    - Print and mount new screw into holder
+    - Figure out wiring 
+    - Determine spot for 2 mini servos and how they will open/close
+    - Set up new lagging all the way down

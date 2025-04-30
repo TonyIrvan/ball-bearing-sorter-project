@@ -1,0 +1,9 @@
+Ideas:
+    [Raspberry Pi Pinout Reference: BCM numbering]
+
+    Brass Ball completes this contact:
+       +3.3V ---[Metal Contact 1]---[Ball]---[Metal Contact 2]--- GPIO17
+                                                     |
+                                                 [10kΩ]
+                                                     |
+                                                    GND
